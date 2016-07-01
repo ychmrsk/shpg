@@ -1,0 +1,79 @@
+#! /bin/sh
+
+chmod +x FILENAME
+
+wildcard
+ *      any character including empty
+ ?      any one character
+ [...]  any character in []
+ [!...] any character not in []
+
+ex)
+ *tmp       file name ending with 'tmp'
+ *tmp*      file name including 'tmp'
+ [a-z]*     file name starting lowercase alphabet
+ [-a-z]*    file name starting '-' or lowercase alphabet
+ [a-zA-Z]*  file name starting uppercase or lowercase alphabet 
+ *[0-9]*    file name including any digit
+ [!0-9]*    file name not starting a digit
+ ??         file name is two characters
+ ??*        file name is more than one character
+ tmp/*      all files in tmp directory
+
+quotation : (\) (') (")
+  ; & ( ) | ^ < > ? * [ ] $ ' " ` { } \n \t \s
+
+FOO=foo
+'$FOO' => $FOO : not expanded
+"$FOO' => foo  : expanded
+
+echo "Today is 'date'" => Today is 'date'
+echo "Today is `date`" => Today is 2016....
+
+\n  separator
+;   separator
+|   pipe
+&   background
+||  OR operator
+&&  AND oeprator
+
+() execute in sub-shell
+{} execute in current-shell
+
+============================================================
+if / for / while / case
+============================================================
+if COND1
+then
+    COMMAND
+elif COND2
+then
+    COMMAND
+else
+    COMMAND
+fi
+------------------------------------------------------------
+for VAR in LIST
+do
+    COMMAND
+done
+------------------------------------------------------------
+while COMMAND_LIST
+do
+    COMMAND
+done
+------------------------------------------------------------
+case STRING in
+     PATTERN1) COMMAND_LIST ;;
+     PATTERN2) COMMAND_LIST ;;
+     PATTERN3) COMMAND_LIST ;;
+esac
+------------------------------------------------------------
+* break , continue
+
+
+
+
+if test -r file
+if [ -r file ]
+
